@@ -1,0 +1,71 @@
+﻿<Window x:Class="ExpenseIt.ExpenseItHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExpenseIt"
+        mc:Ignorable="d"
+        Title="ExpenseIt - Home" Height="450" Width="800">
+    <Grid Margin="10,0,10,10">
+        <Grid.Background>
+            <ImageBrush ImageSource="watermark2.png"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="230"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.Row="1" Grid.Column="0"
+            Content="Last Previewed"/>
+
+        <ListBox 
+            Grid.Column="0" Grid.Row="2" Margin="0,0,10,10"
+            ItemsSource="{Binding Path=PersonsChecked}"/>
+
+        <Label
+            Grid.Column="0" Grid.Row="3"
+            HorizontalAlignment="Left" VerticalAlignment="Bottom"
+            Content="{Binding Path=LastChecked}"/>
+
+        <Label 
+            Grid.Column="1"
+            Content="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=MainCaptionText}"/>
+
+        <Border 
+            Grid.Column="1" Grid.Row="1"
+            Height="35" Padding="5" 
+            Background="#3E87D4">
+        <Label            
+            VerticalAlignment="Center"
+            Foreground="White"
+            Content="Names"/>
+        </Border>
+
+        <ListBox 
+            x:Name="peopleListBox" 
+            Grid.Row="2" Grid.Column="1"
+            Margin="0,0,0,10"
+            ScrollViewer.VerticalScrollBarVisibility="Visible"
+            SelectionChanged="peopleListBox_SelectionChanged_1"
+            ItemsSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=ExpenseDataSource}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Path=Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button
+            Grid.Column="1" Grid.Row="3"
+            HorizontalAlignment="Right"
+            Width="125" Height="25"
+            Content="{Binding ElementName=peopleListBox, Path=SelectedItem.Name}" Click="Button_Click"/>
+    </Grid>
+</Window>

@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="StudentInfoSystem.Views.AllStudentsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StudentInfoSystem.Views"
+             xmlns:viewmodels="clr-namespace:StudentInfoSystem.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:AllStudentsViewModel}"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <ListView
+            Margin="20"
+            ItemsSource="{Binding ListOfStudents}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="110">
+                        <GridViewColumnHeader Content="Име"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding SecondName}" Width="110">
+                        <GridViewColumnHeader Content="Презиме"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding LastName}" Width="110">
+                        <GridViewColumnHeader Content="Фамилия"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Faculty}" Width="80">
+                        <GridViewColumnHeader Content="Факултет"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Speciality}" Width="90">
+                        <GridViewColumnHeader Content="Специалност"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding FacultyNumber}" Width="120">
+                        <GridViewColumnHeader Content="Факултетет номер"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Course}" Width="40">
+                        <GridViewColumnHeader Content="Курс"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Stream}" Width="40">
+                        <GridViewColumnHeader Content="Поток"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Group}" Width="50">
+                        <GridViewColumnHeader Content="Група"/>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>
